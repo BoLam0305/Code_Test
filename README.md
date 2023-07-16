@@ -1,5 +1,3 @@
-# react-test
-
-# npm install axios
-#npm install "mdb-react-ui-kit"
-npm install react-dropdown  --save
+For React app
+1.  cd .\my-app\
+2.  npm start
