@@ -22,9 +22,9 @@ const TableSearching = ({ onInput }) => {
         onInput(inputValue, filterValue);
     };
     return (
-        <div>
-            <input type="text" onInput={handleInput} placeholder="Type something..." />
-            <Dropdown onChange={handleChange} value={defaultOption} options={options} placeholder="Select an option" />
+        <div className='flex w-full mx-auto'>
+            <input className='p-2 mr-2 mb-2 border-2 border-slate-300' type="text" onInput={handleInput} placeholder="Type something..." />
+            <Dropdown  onChange={handleChange} value={defaultOption} options={options} placeholder="Select an option" />
         </div>
     )
 }

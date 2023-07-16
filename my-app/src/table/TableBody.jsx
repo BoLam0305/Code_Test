@@ -2,7 +2,7 @@ import React from 'react'
 
 const TableBody = ({ tableData, columns }) => {
     return (
-        <tbody>
+        <tbody className='w-full'>
             {tableData.map((data) => {
                 return (
                     <tr key={data.id}>

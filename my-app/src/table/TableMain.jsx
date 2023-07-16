@@ -3,7 +3,6 @@ import axios from 'axios';
 import TableBody from './TableBody';
 import { TableHeader } from './TableHeader';
 import { sortByName } from './sort_service/SortbyName';
-import { sortByUserName } from './sort_service/SortByUserName';
 import { sortByEmail } from './sort_service/SortByEmail';
 import { sortByPhone } from './sort_service/SortByPhone';
 import { filterByName } from './filter_service/FilterByName';
@@ -13,29 +12,26 @@ import TableSearching from './TableSearching';
 
 const TableMain = () => {
     const [jsonData, setJsonData] = useState([]);
+    const [tableData, setTableData] = useState([]);
 
     const [sortByNameToggle, setSortByNameToggle] = useState(false);
     const [sortByEmailToggle, setSortByEmailToggle] = useState(false);
     const [sortByPhoneToggle, setSortByPhoneToggle] = useState(false);
-    const [styleToggle, setStyleToggle] = useState(false);
-
-    const [tableData, setTableData] = useState([]);
 
     const handleInputChange = (keyWord, option) => {
+
         setTableData(jsonData);
-        if(option==="name"){
+        if (option === "name") {
             setTableData(filterByName(jsonData, keyWord));
-        }else if(option==="email"){
+        } else if (option === "email") {
             setTableData(filterByEmail(jsonData, keyWord));
-        }else{
+        } else {
             setTableData(filterByPhone(jsonData, keyWord));
         }
     };
 
-
     const handleChildClick = (id) => {
         if (id === "name") {
-  
             setTableData(sortByName(tableData, sortByNameToggle));
             setSortByNameToggle(!sortByNameToggle);
         } else if (id === "email") {
@@ -72,13 +68,15 @@ const TableMain = () => {
     };
 
     return (
-        <>
-            <TableSearching onInput={handleInputChange} ></TableSearching>
-            <table className="table">
-                <TableHeader columns={columns} onClick={handleChildClick} />
-                <TableBody columns={columns} tableData={tableData} />
-            </table>
-        </>
+        <div className='flex justify-center items-center'>
+            <div id='responsive' className='p-4 min-w-full md:min-w-0 flex flex-col justify-between items-center'>
+                <TableSearching onInput={handleInputChange} ></TableSearching>
+                <table className="table " id='table_user'>
+                    <TableHeader columns={columns} onClick={handleChildClick} />
+                    <TableBody columns={columns} tableData={tableData} />
+                </table>
+            </div>
+        </div>
     )
 }
 
